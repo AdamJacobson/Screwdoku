@@ -65,7 +65,7 @@ class SudokuGame
   end
 
   def solved?
-    p board.solved?
+    board.solved?
   end
 
   def valid_pos?(pos)
@@ -87,5 +87,5 @@ class SudokuGame
   attr_reader :board
 end
 
-  game = SudokuGame.from_file("puzzles/sudoku1-almost.txt")
-  game.run
+game = SudokuGame.from_file("puzzles/sudoku1-almost.txt")
+game.run

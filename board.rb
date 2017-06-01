@@ -56,25 +56,17 @@ class Board
     @grid
   end
 
-  # alias_method :rows, :size
-
   def solved?
-    # debugger
-    r = rows.all? do |row|
-      debugger
-      solved_set?(row)
-    end
+    solved_rows = rows.all? { |row| solved_set?(row) }
+    solved_cols = columns.all? { |col| solved_set?(col) }
+    solved_squares = squares.all? { |square| solved_set?(square) }
 
-    p c = columns.all? { |col| solved_set?(col) }
-    p s = squares.all? { |square| solved_set?(square) }
-
-    r && c && s
+    solved_rows && solved_cols && solved_squares
   end
 
   def solved_set?(tiles)
-    # debugger
     nums = tiles.map(&:value)
-    nums.sort == (1..9)
+    nums.sort == (1..9).to_a
   end
 
   def square(idx)
