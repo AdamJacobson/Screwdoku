@@ -1,4 +1,5 @@
 require_relative "board"
+require 'byebug'
 
 class SudokuGame
   def self.from_file(filename)
