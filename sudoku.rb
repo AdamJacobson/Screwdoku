@@ -65,7 +65,7 @@ class SudokuGame
   end
 
   def solved?
-    board.solved?
+    p board.solved?
   end
 
   def valid_pos?(pos)
@@ -79,8 +79,7 @@ class SudokuGame
   end
 
   def valid_val?(val)
-    val.is_a?(Integer) ||
-    val.between?(0, 9)
+    val.is_a?(Integer) && val.between?(0, 9)
   end
 
   private
@@ -88,5 +87,5 @@ class SudokuGame
   attr_reader :board
 end
 
-  game = SudokuGame.from_file("puzzles/sudoku1.txt")
+  game = SudokuGame.from_file("puzzles/sudoku1-almost.txt")
   game.run
