@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Board
   def self.empty_grid
     Array.new(9) do
@@ -51,8 +53,8 @@ class Board
 
   def solved?
     rows.all? { |row| solved_set?(row) } &&
-      columns.all? { |col| solved_set?(col) } &&
-      squares.all? { |square| solved_set?(square) }
+    columns.all? { |col| solved_set?(col) } &&
+    squares.all? { |square| solved_set?(square) }
   end
 
   def solved_set?(tiles)
@@ -109,6 +111,7 @@ class Tile
       @value = new_value
     end
   end
+end
 
 class SudokuGame
   def self.from_file(filename)
@@ -175,19 +178,18 @@ class SudokuGame
 
   def valid_pos?(pos)
     pos.is_a?(Array) &&
-      pos.length == 2 &&
-      pos.all? { |x| x.between?(0, board.size - 1) }
+    pos.length == 2 &&
+    pos.all? { |x| x.between?(0, board.size - 1) }
   end
 
   def valid_val?(val)
     val.is_a?(Integer) &&
-      val.between?(0, 9)
+    val.between?(0, 9)
   end
 
   private
   attr_reader :board
 end
-
 
 game = SudokuGame.from_file("puzzles/sudoku1.txt")
 game.run
